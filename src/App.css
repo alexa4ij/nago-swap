@@ -1,0 +1,555 @@
+/* --- Global Styles --- */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Font Inter umumnya digunakan di web3 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0c0c0c; /* Latar belakang gelap */
+    color: #f0f0f0; /* Warna teks terang */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.App {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header/Navbar Styles --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* Padding default untuk desktop */
+    background-color: #1e1e1e; /* Warna latar belakang header */
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: sticky; /* Agar header tetap di atas saat digulir */
+    top: 0;
+    z-index: 100; /* Pastikan header di atas konten lain */
+}
+
+.logo-container .logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #4CAF50; /* Warna hijau untuk logo "NAGO SWAP" */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.main-nav .nav-menu {
+    display: flex;
+    list-style: none; /* Hilangkan bullet point */
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav .nav-item {
+    margin: 0 15px;
+}
+
+.main-nav .nav-item a {
+    color: #fff;
+    text-decoration: none; /* Hilangkan garis bawah */
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.main-nav .nav-item a:hover,
+.main-nav .nav-item.active a {
+    color: #4CAF50; /* Warna hijau saat hover/aktif */
+    border-bottom: 2px solid #4CAF50; /* Garis bawah hijau saat hover/aktif */
+}
+
+/* Wallet Section */
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antar elemen wallet */
+    margin-left: auto; /* Untuk mendorong ke kanan, jika tidak ada flex-wrap sebelumnya */
+}
+
+.connect-wallet-button {
+    background-color: #4CAF50; /* Tombol hijau default */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px; /* Sudut lebih membulat */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex; /* Untuk ikon dan teks */
+    align-items: center;
+    gap: 8px; /* Jarak antara ikon dan teks */
+}
+
+.connect-wallet-button:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+.connect-wallet-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.connect-wallet-button.connected {
+    background-color: #333; /* Warna gelap saat terhubung */
+    /* display: flex; dan align-items: center; serta gap: 5px; sudah di atas */
+}
+
+/* --- MetaMask Specific Styles --- */
+.connect-wallet-button.metamask-button {
+    background-color: #F6851B; /* Warna oranye MetaMask */
+}
+
+.connect-wallet-button.metamask-button:hover {
+    background-color: #e07b1a; /* Warna oranye yang sedikit lebih gelap saat hover */
+}
+
+.metamask-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle; /* Memastikan ikon sejajar dengan teks */
+}
+/* --- End MetaMask Specific Styles --- */
+
+
+.wallet-icon {
+    font-size: 1.1em;
+}
+
+.network-select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: border-color 0.3s ease;
+    /* Untuk menata dropdown, biar sejajar dengan tombol */
+    height: 40px; /* Sesuaikan dengan tinggi tombol jika perlu */
+    display: flex;
+    align-items: center;
+}
+
+.network-select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.wallet-status.error {
+    color: #ff4d4f; /* Merah untuk pesan error */
+    font-size: 0.85em;
+}
+
+/* Hamburger Icon (Tersembunyi di desktop secara default) */
+.hamburger-icon {
+    display: none; /* Sembunyikan di desktop */
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 20px; /* Beri jarak dari logo */
+}
+
+/* --- Main Content (untuk Swap, DCA, Liquidity Pages) --- */
+.main-content {
+    flex-grow: 1; /* Konten utama mengambil sisa ruang */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Mengatur konten ke atas */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.swap-container {
+    background-color: #1a1a1a; /* Latar belakang container utama */
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px; /* Lebar maksimum untuk form swap/dca/liquidity */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.swap-header {
+    margin-bottom: 25px;
+}
+
+.swap-title {
+    font-size: 2em;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.page-description {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.swap-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #333;
+    color: #bbb;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-button.active,
+.tab-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ddd;
+    font-size: 0.9em;
+}
+
+.amount-input {
+    width: calc(70% - 20px); /* Sesuaikan lebar input */
+    padding: 12px 15px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    font-size: 1.1em;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Penting untuk padding dan border */
+    float: left; /* Biarkan input dan select sejajar */
+}
+
+.amount-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.token-select {
+    width: 30%; /* Sesuaikan lebar select */
+    padding: 12px 10px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+    font-size: 1.1em;
+    cursor: pointer;
+    appearance: none; /* Hilangkan gaya default select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23f0f0f0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Ikon panah kustom */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 20px auto;
+    float: right; /* Biarkan input dan select sejajar */
+}
+
+.token-select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.input-group::after { /* Clearfix untuk input-group */
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.swap-button {
+    background: none;
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.swap-button svg {
+    color: #4CAF50;
+    width: 24px;
+    height: 24px;
+}
+
+.swap-button:hover {
+    background-color: #4CAF50;
+}
+
+.swap-button:hover svg {
+    color: white;
+}
+
+.execute-swap-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.execute-swap-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.execute-swap-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.execute-swap-button.connect-prompt {
+    background-color: #555;
+}
+
+.execute-swap-button.connect-prompt:hover {
+    background-color: #666;
+}
+
+/* Gaya baru untuk tombol connect wallet di bagian swap */
+.connect-wallet-prompts {
+    display: flex;
+    flex-direction: column; /* Tumpuk tombol secara vertikal */
+    gap: 10px; /* Jarak antara tombol */
+    margin-top: 20px;
+    width: 100%;
+}
+.connect-wallet-prompts .execute-swap-button {
+    margin-top: 0; /* Override margin-top default */
+}
+
+
+.rate-info {
+    margin-top: 20px;
+    font-size: 0.95em;
+    color: #ccc;
+}
+
+.rate-display {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+.loading-message {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #4CAF50;
+}
+
+/* --- DCA Page Specific Styles (reuse swap-container) --- */
+/* Tambahan jika ada elemen spesifik DCA yang belum tercover */
+
+/* --- Liquidity Page Specific Styles (reuse swap-container) --- */
+.plus-symbol {
+    font-size: 2em;
+    color: #4CAF50;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.liquidity-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.liquidity-actions .execute-swap-button {
+    flex: 1; /* Ambil ruang yang sama */
+    margin-top: 0; /* Hapus margin atas yang dari .execute-swap-button umum */
+}
+
+.liquidity-actions .execute-swap-button.secondary {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #ddd;
+}
+
+.liquidity-actions .execute-swap-button.secondary:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+/* --- Toastify Custom Styles (Opsional, jika ingin mengubah default) --- */
+.Toastify__toast-container {
+    /* Sesuaikan posisi dan gaya container toast */
+}
+
+.Toastify__toast--success {
+    background-color: #4CAF50 !important;
+    color: white !important;
+}
+
+.Toastify__toast--error {
+    background-color: #ff4d4f !important;
+    color: white !important;
+}
+
+.Toastify__toast--info {
+    background-color: #2196f3 !important;
+    color: white !important;
+}
+
+.Toastify__toast--warning {
+    background-color: #ff9800 !important;
+    color: white !important;
+}
+
+
+/* --- Media Queries untuk Perangkat Mobile --- */
+@media (max-width: 768px) {
+    /* Header */
+    .main-header {
+        padding: 10px 15px; /* Mengurangi padding di header */
+        flex-wrap: wrap; /* Memungkinkan item membungkus ke baris berikutnya jika terlalu lebar */
+        justify-content: space-between; /* Menjaga logo dan wallet di ujung */
+        align-items: center;
+    }
+
+    /* Logo Section */
+    .logo-container .logo-text {
+        font-size: 1.2em; /* Mengurangi ukuran font logo */
+        margin-right: 10px; /* Kurangi margin kanan */
+    }
+
+    /* Wallet Section */
+    .wallet-section {
+        order: 2; /* Pindahkan ke baris baru atau posisi yang lebih baik */
+        width: 100%; /* Ambil lebar penuh */
+        margin-top: 10px; /* Beri sedikit jarak dari atas */
+        justify-content: center;
+        display: flex; /* Untuk menengahkan tombol */
+        flex-wrap: wrap; /* Izinkan membungkus jika ada beberapa tombol/dropdown */
+    }
+
+    .connect-wallet-button {
+        padding: 8px 12px; /* Mengurangi padding tombol wallet */
+        font-size: 0.9em; /* Mengurangi ukuran font tombol wallet */
+        margin: 5px; /* Beri sedikit jarak antar tombol/dropdown */
+    }
+
+    .network-select {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        margin: 5px;
+    }
+
+    .wallet-status.error {
+        font-size: 0.8em; /* Ukuran font status error */
+        margin: 5px;
+    }
+
+    /* Navigasi (Menu) */
+    .main-nav {
+        order: 3; /* Pindahkan ke bawah jika diperlukan */
+        width: 100%; /* Ambil lebar penuh */
+        /* display: none; <- BARIS INI DIKONTROL OLEH REACT STATE MELALUI inline style */
+        position: absolute; /* Posisikan absolut di bawah header */
+        top: 60px; /* Sesuaikan dengan tinggi header Anda */
+        left: 0;
+        z-index: 99; /* Sedikit di bawah header utama */
+        padding: 10px 0;
+        background-color: #1a1a1a; /* Latar belakang untuk menu yang terbuka */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        max-height: 80vh; /* Batasi tinggi menu agar tidak memakan seluruh layar */
+        overflow-y: auto; /* Tambahkan scroll jika menu terlalu panjang */
+    }
+
+    .nav-menu {
+        flex-direction: column; /* Tumpuk item menu secara vertikal */
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .nav-item a {
+        padding: 12px; /* Padding lebih besar agar mudah diklik */
+        display: block;
+    }
+
+    /* Hamburger Icon - Tampilkan di mobile */
+    .hamburger-icon {
+        display: block; /* Tampilkan ikon hamburger di mobile */
+        order: 1; /* Posisikan di dekat logo (atau atur sesuai keinginan) */
+        margin-left: auto; /* Dorong ke kanan jika Anda ingin di ujung kanan header */
+    }
+
+    /* Main Content dan Swap Container di Mobile */
+    .main-content {
+        padding: 15px; /* Mengurangi padding konten utama di mobile */
+        align-items: center; /* Tengahkan container swap */
+    }
+
+    .swap-container {
+        padding: 20px; /* Mengurangi padding container swap */
+        width: 95%; /* Lebih lebar di mobile */
+    }
+
+    .amount-input,
+    .token-select {
+        width: 100%; /* Buat input dan select mengambil lebar penuh */
+        float: none; /* Hilangkan float */
+        margin-bottom: 10px; /* Beri jarak antar input/select */
+    }
+
+    .token-select {
+        background-position: right 15px top 50%; /* Sesuaikan posisi ikon panah */
+    }
+
+    .input-group::after { /* Reset clearfix jika input/select tidak float */
+        display: none;
+    }
+
+    .liquidity-actions {
+        flex-direction: column; /* Tumpuk tombol Add/Remove Likuiditas */
+        gap: 10px;
+    }
+
+    .connect-wallet-prompts {
+        flex-direction: column; /* Tumpuk tombol connect di mobile */
+    }
+}

@@ -1,0 +1,131 @@
+/* src/Components/ConnectedWalletDropdown.css */
+
+.connected-wallet-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px; /* Adjust as needed */
+}
+
+.dropdown-toggle {
+    background: #333; /* Darker background for toggle button */
+    color: white;
+    border: 1px solid #555;
+    border-radius: 20px; /* Pill shape */
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-toggle:hover {
+    background: #444;
+    border-color: #00ccff;
+}
+
+.wallet-type-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.arrow-icon {
+    margin-left: 5px;
+    transition: transform 0.2s ease;
+}
+
+.arrow-icon.open {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position below the toggle button */
+    right: 0; /* Align to the right */
+    background: #2a2a2a; /* Same as modal content background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 250px;
+    margin-top: 10px; /* Space between button and dropdown */
+    z-index: 1001; /* Ensure it's above other content */
+    overflow: hidden; /* For rounded corners */
+}
+
+.dropdown-header {
+    background: #3a3a3a;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #444;
+    color: #00ccff;
+    font-weight: bold;
+    word-break: break-all; /* Allow address to break if long */
+}
+
+.wallet-type-icon-large {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.full-address {
+    flex-grow: 1;
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    color: #bbb;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.copy-button:hover {
+    color: #fff;
+}
+
+.dropdown-item {
+    background: none;
+    border: none;
+    color: white;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s ease, color 0.2s ease;
+    font-size: 0.95em;
+}
+
+.dropdown-item:hover {
+    background: #3a3a3a;
+    color: #00ccff;
+}
+
+.dropdown-item .icon {
+    font-size: 1.2em; /* Adjust icon size */
+    width: 20px; /* Fixed width for icon alignment */
+    text-align: center;
+}
+
+.dropdown-item.disconnect {
+    color: #ff6b6b; /* Red for disconnect */
+}
+
+.dropdown-item.disconnect:hover {
+    background: #4a3030; /* Darker red background on hover */
+    color: #fff;
+}

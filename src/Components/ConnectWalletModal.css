@@ -1,0 +1,137 @@
+/* src/Components/ConnectWalletModal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content.connect-wallet-modal {
+    background: #2a2a2a; /* Darker background for the modal */
+    border-radius: 12px;
+    padding: 25px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+    color: white;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px); /* Add a slight blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #00ccff; /* Highlighted title */
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #bbb;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 5px 10px;
+}
+
+.close-button:hover {
+    color: #fff;
+}
+
+.wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.wallet-button {
+    background: #3a3a3a; /* Darker button background */
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-align: center;
+    height: 120px; /* Fixed height for uniformity */
+}
+
+.wallet-button:hover {
+    background: #4a4a4a;
+    border-color: #00ccff;
+    transform: translateY(-3px);
+}
+
+.wallet-button:active {
+    transform: translateY(0);
+}
+
+.wallet-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content.connect-wallet-modal {
+        padding: 20px;
+    }
+    .modal-header h3 {
+        font-size: 1.5em;
+    }
+    .wallet-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    .wallet-button {
+        padding: 10px;
+        height: 100px;
+    }
+    .wallet-logo {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content.connect-wallet-modal {
+        padding: 15px;
+    }
+    .modal-header h3 {
+        font-size: 1.3em;
+    }
+    .wallet-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller phones */
+    }
+    .wallet-button {
+        font-size: 0.8em;
+    }
+}
